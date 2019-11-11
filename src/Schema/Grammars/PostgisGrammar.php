@@ -186,7 +186,7 @@ class PostgisGrammar extends PostgresGrammar
             if ($type == 'GEOGRAPHY' && $column->srid != 4326) {
                 throw new UnsupportedGeomtypeException('Error with validation of srid! SRID of GEOGRAPHY must be 4326)');
             }
-            return $schema . '.' . $type . '(' . $geometryType . ', ' . $column->srid . ')';
+            return $schema . ($schema ? '.' : '') . $type . '(' . $geometryType . ', ' . $column->srid . ')';
         } else {
             throw new UnsupportedGeomtypeException('Error with validation of geom type or srid!');
         }
